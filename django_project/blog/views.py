@@ -5,22 +5,7 @@ from .models import Post
 from django.views.generic import ListView,DetailView, CreateView,UpdateView,DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-posts = [
 
-    {
-        'author' :'JuberS',
-        'title' : 'Blog Post 1',
-        'content' : 'First post content',   
-        'date_posted': 'july 23 2022'
-    },
-     {
-        'author' :'RuksarS',
-        'title' : 'Blog Post 2',
-        'content' : 'Second post content',
-        'date_posted': 'july 24 2022'
-    }
-
-]
 
 
 def home(request):
@@ -34,7 +19,8 @@ class PostListView(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     ordering = ['date_posted']
-
+    paginate_by =2
+    
 class PostDetailView(DetailView):
     model = Post
    
